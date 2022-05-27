@@ -8,20 +8,20 @@ public class GuguClass {
             }
         }
 
+        final int RANGE_OF_STAGES = 8;
         final int GROUP_OF_STAGES = 3;
 
-        int rangeOfStages = 8;
         int groupIndex = 0;
         int stageIndex = 0;
         int multiplicandIndex = 0;
         int stageNow = 0;
 
-        while (rangeOfStages > stageNow) {
+        while (stageNow < RANGE_OF_STAGES) {
 
-            while (multiplicandIndex <= 8) {
+            while (multiplicandIndex <= RANGE_OF_STAGES) {
                 stageNow = GROUP_OF_STAGES * groupIndex;
 
-                while (stageIndex < 3) {
+                while (stageIndex < GROUP_OF_STAGES) {
 
                     System.out.print(gugudanStrings[stageNow][multiplicandIndex]);
 
@@ -29,14 +29,17 @@ public class GuguClass {
                         System.out.print("\t");
                     }
 
+                    boolean isAligned = false;
+
                     if (stageIndex == GROUP_OF_STAGES - 1) {
                         System.out.print("\n");
+                        isAligned = true;
                     }
 
                     stageNow += 1;
                     stageIndex += 1;
 
-                    if (stageNow >= rangeOfStages) {
+                    if (!isAligned && stageNow >= RANGE_OF_STAGES) {
                         System.out.print("\n");
                         break;
                     }
@@ -46,7 +49,7 @@ public class GuguClass {
                 multiplicandIndex += 1;
             }
 
-            if (stageNow < rangeOfStages) {
+            if (stageNow < RANGE_OF_STAGES) {
                 System.out.println();
             }
 
